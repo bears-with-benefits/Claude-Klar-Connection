@@ -147,8 +147,4 @@ async def get_channel_attribution(
 
 
 if __name__ == "__main__":
-    # Streamable HTTP is the transport custom/remote MCP connectors use.
-    # Listens on 0.0.0.0:$PORT so it can be deployed behind any HTTPS
-    # reverse proxy / hosting platform that terminates TLS for you.
-    port = int(os.environ.get("PORT", "8000"))
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)
+    mcp.run(transport="streamable-http")
