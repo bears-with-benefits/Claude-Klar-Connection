@@ -71,7 +71,16 @@ from mcp.server.fastmcp import FastMCP
 
 KLAR_API_BASE = "https://api.getklar.com"
 
-mcp = FastMCP("klar-channel-data")
+port = int(os.environ.get("PORT", "8000"))
+
+mcp = FastMCP(
+    "klar-channel-data",
+    host="0.0.0.0",
+    port=port,
+    streamable_http_path="/mcp",
+    stateless_http=True,
+    json_response=True,
+)
 
 
 async def _get_bearer_token(client: httpx.AsyncClient) -> str:
